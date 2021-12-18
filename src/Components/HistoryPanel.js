@@ -1,19 +1,18 @@
 function HistoryPanel() {
-    let list = [1,2,3,4,5,6,7,8,9,0 ,8,3,2,3,2,3,2,3,2,3,23,2];
+  let list = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 8, 3, 2, 3, 2, 3, 2, 3, 2, 3, 23, 2,
+  ];
   return (
     <div>
-       <p style={{marginLeft:"15px"}}>History</p> 
-        <nav className="history-panel">
-      <div style={{marginBottom: "15px"}}>
-     {
-         list.map((list) => {
-         return HistoryTile();
-         })
-     }
-      </div>
-    </nav>
+      <p style={{ marginLeft: "15px" }}>History</p>
+      <nav className="history-panel">
+        <div style={{ marginBottom: "15px" }}>
+          {list.map((list) => {
+            return HistoryTile();
+          })}
+        </div>
+      </nav>
     </div>
-   
   );
 }
 

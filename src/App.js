@@ -1,4 +1,3 @@
-
 import AppBar from "./Components/Appbar";
 import HistoryPanel from "./Components/HistoryPanel";
 import Editor from "./Components/Editor";
@@ -15,8 +14,7 @@ function App() {
       <div className="main">
         <MenuBar></MenuBar>
         <Editor>
-          <UrlPane>
-          </UrlPane>
+          <UrlPane></UrlPane>
           <div className="viewpage">
             <RequestBar></RequestBar>
             <ResponseBar></ResponseBar>
