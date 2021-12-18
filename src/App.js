@@ -1,11 +1,11 @@
-import "./App.css";
+
 import AppBar from "./Components/Appbar";
 import HistoryPanel from "./Components/HistoryPanel";
 import Editor from "./Components/Editor";
 import MenuBar from "./Components/MenuBar";
 import UrlPane from "./Components/UrlPane";
-
-
+import RequestBar from "./Components/RequestBar";
+import ResponseBar from "./Components/ResponseBar";
 
 function App() {
   return (
@@ -13,12 +13,14 @@ function App() {
       <AppBar></AppBar>
 
       <div className="main">
-      
-        <MenuBar>
-        
-        </MenuBar>
+        <MenuBar></MenuBar>
         <Editor>
-        <UrlPane>chjkh</UrlPane>
+          <UrlPane>
+          </UrlPane>
+          <div className="viewpage">
+            <RequestBar></RequestBar>
+            <ResponseBar></ResponseBar>
+          </div>
         </Editor>
 
         <HistoryPanel></HistoryPanel>
