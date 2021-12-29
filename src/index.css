@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
+  user-select: none;
 }
 
 
@@ -117,10 +118,35 @@ code {
 }
 
 .history-tile{
+  display: flex;
+  flex-flow: column;
   background-color: #F6F6F6;
   border-radius: 5px;
   padding: 1px;
   margin: 5px;
+  
+}
+
+.history-tile .sub1 { 
+   display: flex;
+   padding: 4px; 
+   flex-flow: row;
+}
+
+.history-tile .sub1 .leading-text {
+    color: #00AD07;
+    display: flex;
+    font-size: 13;
+    margin: 0;
+    padding-top: 4px;
+    align-items: start;
+    width: 100%;
+  
+}
+
+.history-tile .sub1 .history-tile-items{
+  font-size: 10px;
+  margin: 10px;
 }
 
 
