@@ -1,7 +1,7 @@
 function AppBar() {
   return (
     <div className="appbar">
-        Mediator
+        <h2>Mediator</h2>
     </div>
   )
 }

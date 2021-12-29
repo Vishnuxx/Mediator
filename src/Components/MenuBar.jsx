@@ -1,5 +1,6 @@
 import React from 'react';
-const MenuBar = (props) => {
+
+function MenuBar(props) {
         return (
             <menu className="menubar">{props.children}</menu>
         );

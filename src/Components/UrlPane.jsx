@@ -1,10 +1,11 @@
-
+import TabBar from "./TabBar";
 
 
 
 function UrlPane() {
     return (
-        <div className="Url-pane">
+        <div>
+            <div className="Url-pane">
             <select name="req-type" id="req-type">
                 <option value="GET">GET</option>
                 <option value="POST">POST</option>
@@ -15,7 +16,11 @@ function UrlPane() {
             <button className="btn-send">
                 Send
             </button>
+            
         </div>
+        <TabBar></TabBar>
+        </div>
+        
     );
 }
 
