@@ -3,5 +3,8 @@ React based api testing tool
 
 ## Mediator
 
-A React Based API Testing software
+A React Based REST API Testing software
+
+
 currently in development
+
