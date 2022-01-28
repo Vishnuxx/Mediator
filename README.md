@@ -1,5 +1,4 @@
-
-React based api testing tool
+An Api testing tool built using react
 
 ## Mediator
 
