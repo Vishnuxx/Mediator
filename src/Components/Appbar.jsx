@@ -1,8 +1,11 @@
+import { Pane } from "evergreen-ui";
+
+
 function AppBar() {
   return (
-    <div className="appbar">
+    <Pane height="50px" >
         <h2>Mediator</h2>
-    </div>
+    </Pane>
   )
 }
 

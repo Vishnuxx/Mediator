@@ -1,5 +1,7 @@
+import { Label, Pane } from "evergreen-ui";
+
 function TabBar() {
-    return <div className="tab-bar">
+    return <Pane display="flex">
         <Tab>
             Tab1
         </Tab>
@@ -15,13 +17,22 @@ function TabBar() {
         <Tab>
             Tab5
         </Tab>
-    </div>
+    </Pane>
 }
 
 function  Tab(props){
-    return <div className="tab" >
-        {props.children}
-    </div>
+    return (
+      <Pane
+        display="flex"
+        width="100px"
+        height="40px"
+        alignItems="center"
+        justifyContent="space-around"
+      >
+        <Label>{props.children}</Label>
+        <p>x</p>
+      </Pane>
+    );
 }
 
 export default TabBar;

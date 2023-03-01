@@ -3,11 +3,24 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import Mediator from "./js/Mediator.js";
+import { RecoilRoot } from "recoil";
+
+
+
+
+var mediator = new Mediator();
+
+
+
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <RecoilRoot>
+
+      <App mediator={mediator} />
+
+  </RecoilRoot>,
   document.getElementById("root")
 );
 
