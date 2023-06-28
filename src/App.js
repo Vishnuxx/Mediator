@@ -1,4 +1,3 @@
-import "./App.css";
 import AppBar from "./Components/Appbar";
 import HistoryPanel from "./Components/HistoryPanel";
 import Editor from "./Components/Editor";
@@ -11,14 +10,11 @@ function App() {
   return (
     <div className="App">
       <AppBar></AppBar>
-
+      <p className="text-3xl font-bold underline">Hello world!</p>
       <div className="main">
-      
-        <MenuBar>
-        
-        </MenuBar>
+        <MenuBar></MenuBar>
         <Editor>
-        <UrlPane>chjkh</UrlPane>
+          <UrlPane>chjkh</UrlPane>
         </Editor>
 
         <HistoryPanel></HistoryPanel>
