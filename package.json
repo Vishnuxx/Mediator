@@ -7,6 +7,8 @@
     "@elastic/datemath": "^5.0.3",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@rsuite/icons": "^1.0.2",
+    "@rsuite/responsive-nav": "^5.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
@@ -18,7 +20,9 @@
     "react-icons": "^4.8.0",
     "react-resize-panel": "^0.3.5",
     "react-scripts": "5.0.1",
+    "react-spaces": "^0.4.1",
     "recoil": "^0.7.7",
+    "rsuite": "^5.35.1",
     "web-vitals": "^3.3.0"
   },
   "scripts": {
