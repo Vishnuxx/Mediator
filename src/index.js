@@ -4,10 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./tailwind.css"
+import "rsuite/dist/rsuite.min.css";
+import { CustomProvider } from "rsuite";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CustomProvider theme="dark">
+      <App />
+    </CustomProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

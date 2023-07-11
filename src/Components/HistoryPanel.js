@@ -1,8 +1,14 @@
+import { Stack } from "rsuite";
+
 function HistoryPanel() {
     return (
-        <nav className = "history-panel">
-            History panel
-        </nav>
+       <Stack style={{
+            height: "95vh",
+            width: "20vw",
+            borderRight:"1px solid #262626"
+        }}>
+
+        </Stack>
     );
 }
 

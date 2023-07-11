@@ -25,8 +25,8 @@ code {
   width:3vw;
 }
 .editor{
-  width: 77vw;
-  height:95vh
+  width: 100vw;
+  /* height:100vh */
 }
 .history-panel {
   height: 95vh;
@@ -37,8 +37,7 @@ code {
 .main {
   display: flex;
   flex-flow: row;
-
-  
+  height: 100vh;
 }
 
 .Url-pane{
