@@ -7,12 +7,23 @@ import "./tailwind.css"
 import "rsuite/dist/rsuite.min.css";
 import { CustomProvider } from "rsuite";
 
+import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
+        
+
+//theme
+import "primereact/resources/themes/lara-light-indigo/theme.css";     
+    
+//core
+import "primereact/resources/primereact.min.css";  
 
 ReactDOM.render(
   <React.StrictMode>
-    <CustomProvider theme="dark">
+    {/* <CustomProvider theme="dark"> */}
+    <PrimeReactProvider>
       <App />
-    </CustomProvider>
+    </PrimeReactProvider>
+
+    {/* </CustomProvider> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
