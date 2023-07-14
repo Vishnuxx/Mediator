@@ -3,20 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-    "@elastic/datemath": "^5.0.3",
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "prop-types": "^15.8.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.4.0",
-    "react-resize-panel": "^0.3.5",
-    "react-scripts": "4.0.3",
-    "recoil": "^0.7.4",
-    "web-vitals": "^1.1.2"
-=======
     "@chakra-ui/react": "^2.5.4",
     "@elastic/datemath": "^5.0.3",
     "@emotion/react": "^11.10.6",
@@ -40,7 +26,6 @@
     "recoil": "^0.7.7",
     "rsuite": "^5.35.1",
     "web-vitals": "^3.3.0"
->>>>>>> main
   },
   "scripts": {
     "start": "react-scripts start",

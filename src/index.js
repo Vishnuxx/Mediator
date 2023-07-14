@@ -3,26 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-<<<<<<< HEAD
-import Mediator from "./js/Mediator.js";
-import { RecoilRoot } from "recoil";
-
-
-
-
-var mediator = new Mediator();
-
-
-
-
-
-ReactDOM.render(
-  <RecoilRoot>
-
-      <App mediator={mediator} />
-
-  </RecoilRoot>,
-=======
 import "./tailwind.css"
 import "rsuite/dist/rsuite.min.css";
 
@@ -46,7 +26,7 @@ ReactDOM.render(
 
     {/* </CustomProvider> */}
   </React.StrictMode>,
->>>>>>> main
+
   document.getElementById("root")
 );
 
