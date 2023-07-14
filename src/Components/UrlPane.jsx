@@ -1,36 +1,28 @@
-import { Button, Container, Input, InputPicker, SelectPicker, Stack } from "rsuite";
-
-const data = [
-  "GET",
-  "POST",
-  "UPDATE",
-  "SELECT",
-  "DELETE"
-].map((item) => ({ label: item, value: item }));
-
+import { getColor } from "../constants/AppColors";
 
 function UrlPane() {
-    return (
-      <Container style={{width:"100%" , flexDirection:"row"}}>
-        <InputPicker size="sm" data={data} style={{ width: 100 }} />
-        <Input placeholder="https://google.com/" size="sm" style={{width:"100%"}}></Input>
-        <Button color="blue" appearance="primary" size='sm'>
+  
+  return (
+    <div className={`bg-[${getColor("secondaryBg")}] w-[100%] p-0 pt-3 `}>
+      <div className="flex  items-center m-1 bg-[] rounded-md overflow-hidden">
+        <select className=" bg-transparent border-r-[1px] border-[#363636] text-sm font-bold text-gray-300 py-2 pl-4 pr-8  rounded-l-md focus:outline-none">
+          <option value="">GET</option>
+          <option value="">POST</option>
+          <option value="">OPTION</option>
+          <option value="">UPDATE</option>
+          <option value="">DELETE</option>
+        </select>
+        <input
+          className={` bg-transparent py-1 px-4 text-sm text-white w-[100%] border-gray-600 rounded-none focus:outline-none`}
+          type="text"
+          placeholder="Enter text"
+        />
+        <button className="py-2 px-8 text-sm  bg-indigo-500 font-bold text-gray-100 border-gray-600  focus:outline-none hover:bg-indigo-600">
           Send
-        </Button>
-      </Container>
-      // <div className="Url-pane">
-      //     <select name="req-type" id="req-type">
-      //         <option value="GET">GET</option>
-      //         <option value="POST">POST</option>
-      //         <option value="UPDATE">UPDATE</option>
-      //         <option value="DELETE">DELETE</option>
-      //     </select>
-      //     <input type="url" className="url-input" placeholder="Enter a url eg: https://google.com" />
-      //     <button className="btn-send">
-      //         Send
-      //     </button>
-      // </div>
-    );
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default UrlPane;

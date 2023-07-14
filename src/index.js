@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./tailwind.css"
 import "rsuite/dist/rsuite.min.css";
+
 import { CustomProvider } from "rsuite";
 
 import { PrimeReactProvider, PrimeReactContext } from "primereact/api";

@@ -1,17 +1,11 @@
 import AppBar from "./Components/Appbar";
-import Editor from "./Components/Editor";
-
-
-
+import Editor from "./Editor";
+import "./App.css"
 
 function App() {
   return (
     <div className="App">
-      <AppBar></AppBar>
-
-      <div className="main">
-        <Editor></Editor>
-      </div>
+      <Editor></Editor>
     </div>
   );
 }

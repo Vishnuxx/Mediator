@@ -3,6 +3,8 @@ import MoreIcon from "@rsuite/icons/More";
 import { useState } from "react";
 import { Button, Container, FlexboxGrid, IconButton, Nav, Stack } from "rsuite";
 import ResponsiveNav from "@rsuite/responsive-nav";
+import { TabView } from "primereact/tabview";
+import { TabPanel } from "@chakra-ui/react";
 
 const defaultItems = [
   { eventKey: "A", label: "Item A" },
@@ -12,110 +14,25 @@ const defaultItems = [
   { eventKey: "E", label: "Item E" },
   { eventKey: "F", label: "Item F" },
 ];
-
+const tabs = Array.from({ length: 50 }, (_, i) => ({
+  title: `Tab ${i + 1}`,
+  content: `Tab ${i + 1} Content`,
+}));
 function Tabs() {
   const [activeKey, setActiveKey] = useState("A");
   const [items, setItems] = useState(defaultItems);
-  return (
-    <Container
-      style={{
-        width: "100%",
-        overflow: "hidden",
-        paddingRight: "50px",
-        boxSizing: "border-box",
-        flexFlow: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        // background:'red'
-      }}
-    >
-      <IconButton
-        circle
-        size="sm"
-        style={{
-          width: "30px",
-          height: "30px",
-        }}
-        icon={<PlusIcon />}
-        onClick={() => {
-          const itemKey = getKey();
-          const nextItems = [
-            ...items,
-            {
-              eventKey: itemKey,
-              label: `Item ${itemKey}`,
-            },
-          ];
-          setItems(nextItems);
-        }}
-      ></IconButton>
 
-      <Container style={{ overflow: "scroll", width: "100%" }}>
-        <Tabs1 data={sampleData}></Tabs1>
-        {/* <ResponsiveNav
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            width: "100%",
-            overflow: "scroll",
-          }}
-          removable
-          appearance="tabs"
-          moreText={<MoreIcon />}
-          moreProps={{ noCaret: true }}
-          activeKey={activeKey}
-          onSelect={setActiveKey}
-          onItemRemove={(eventKey) => {
-            const nextItems = [...items];
-            nextItems.splice(
-              nextItems.map((item) => item.eventKey).indexOf(eventKey),
-              1
-            );
-            setItems(nextItems);
-            setActiveKey(nextItems[0] ? nextItems[0].eventKey : null);
-          }}
-        >
-          {items.toReversed().map((item) => (
-            <ResponsiveNav.Item
-              key={item.eventKey}
-              eventKey={item.eventKey}
-              role="div"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                width: "300px",
-              }}
-            > */}
-        {/* <Stack style={{ flexDirection: "row", width: "100px" }}> */}
-        {/* <p
-                id="text"
-                style={{
-                  color: "#42f5b9",
-                  fontWeight: "600",
-                  width: "fit-content",
-                  fontSize: "11px",
-                  marginRight: "8px",
-                }}
-              >
-                POST
-              </p>
-              <p
-                style={{
-                  fontWeight: "600",
-                  width: "fit-content",
-                  fontSize: "13px",
-                  margin: 0,
-                }}
-              >
-                {item.label}
-              </p> */}
-        {/* </Stack> */}
-        {/* </ResponsiveNav.Item>
-          ))}
-        </ResponsiveNav> */}
-      </Container>
-    </Container>
+  return (
+    
+    <TabView  scrollable>
+      {tabs.map((tab) => {
+        return (
+          <TabPanel key={tab.title} header={tab.title}>
+            <p className="m-0">{tab.content}</p>
+          </TabPanel>
+        );
+      })}
+    </TabView>
   );
 }
 

@@ -1,6 +1,11 @@
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -8,66 +13,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-.appbar {
-  height: 5vh;
-  width:100%;
-  background-color: #ffffff;
-}
-.menubar {
-  background-color: aqua;
-  margin: 0;
-  width:3vw;
-}
-.editor{
-  width: 100vw;
-  /* height:100vh */
-}
-.history-panel {
-  height: 95vh;
-  width: 20vw;
-  background-color: #e5e5e5;
-}
-
-.main {
-  display: flex;
-  flex-flow: row;
-  height: 100vh;
-}
-
-.Url-pane{
-  display:flex;
-  flex-flow: row;
-  margin: 8px;
-}
-
-#req-type {
-  background-color: #D8E7D2;
-  color: #319520;
-  border: 1px solid #71BF64;
-  border-radius: 3px;
-  padding: 8px;
-}
-
-.btn-send {
-  border-radius: 3px;
-  background-color: #319520;
-  border: none;
-  padding: 8px;
-  color:white;
-  width: 100px;
-}
-
-.url-input {
-  border-radius: 3px;
-  border: none;
-  background-color: #e5e5e5;
-  padding: 8px;
-  margin: 0 4px;
-  width:100%;
+#root {
+  height: 100%;
 }
