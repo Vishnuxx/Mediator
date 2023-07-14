@@ -1,4 +1,5 @@
 import AppBar from "./Components/Appbar";
+<<<<<<< HEAD
 import HistoryPanel from "./Components/HistoryPanel";
 import Editor from "./Components/Editor";
 import MenuBar from "./Components/MenuBar";
@@ -35,6 +36,16 @@ function App(props) {
         </div>
       </div>  */}
     </>
+=======
+import Editor from "./Editor";
+import "./App.css"
+
+function App() {
+  return (
+    <div className="App">
+      <Editor></Editor>
+    </div>
+>>>>>>> main
   );
 }
 
