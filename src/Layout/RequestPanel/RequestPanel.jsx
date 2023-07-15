@@ -1,7 +1,9 @@
 
-import ReqPropTab from "../../Components/ReqPropsTab/ReqPropTab";
-import TableComponent from "../../Components/ReqPropsTab/TableComponent";
+
+import TableComponent from "../../Components/ReqPropsTab/Table";
 import UrlPane from "../../Components/UrlPane";
+import ReqPropTab from "./Components/tabs/ReqPropTab"
+
 
 
 function RequestPanel() {
