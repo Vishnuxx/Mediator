@@ -5,5 +5,5 @@ An Api testing tool built using react
 A Browser Based REST API Testing software
 
 
-currently under development
+currently under development.
 
