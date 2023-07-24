@@ -3,32 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "./tailwind.css"
+import "./tailwind.css";
 import "rsuite/dist/rsuite.min.css";
+import { createRoot } from "react-dom/client";
 
-import { CustomProvider } from "rsuite";
+const root = createRoot( document.getElementById("root"))
 
-import { PrimeReactProvider, PrimeReactContext } from "primereact/api";
-        
-
-//theme
-import "primereact/resources/themes/lara-light-indigo/theme.css";     
-    
-//core
-import "primereact/resources/primereact.min.css";  
-
-ReactDOM.render(
-  <React.StrictMode>
-    {/* <CustomProvider theme="dark"> */}
-    <PrimeReactProvider>
-      <App />
-    </PrimeReactProvider>
-
-    {/* </CustomProvider> */}
-  </React.StrictMode>,
-
-  document.getElementById("root")
-);
+root.render(<App />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
