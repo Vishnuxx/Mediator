@@ -1,9 +1,4 @@
-// import { Children, useState } from "react";
-
-import { useEffect, useState } from "react";
-import TableComponent from "../../../Components/ReqPropsTab/Table";
 import { TabContent, TabView } from "../../../GenericComponents/TabView";
-import TableView from "../../../GenericComponents/TableView";
 import ParamTab from "./tabs/ParamTab";
 import HeaderTab from "./tabs/HeadersTab";
 import BodyTab from "./tabs/BodyTab";
