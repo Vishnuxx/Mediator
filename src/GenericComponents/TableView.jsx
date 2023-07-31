@@ -33,7 +33,7 @@ const TableView = ({
           {data.map((row, rowIndex) => (
             <tr className="w-full flex flex-row" key={rowIndex}>
               {schema.map((column, columnIndex) => (
-                <td key={columnIndex} className=" px-4 py-2 w-full flex border-[0.1px] border-gray-800">
+                <td key={columnIndex} className=" px-4 py-2 w-full flex border-[0.1px] border-[#202020]">
                   {column.component ? (
                     <column.component
                       value={row[column.name]}

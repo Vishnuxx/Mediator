@@ -7,7 +7,7 @@ const TableComponent = () => {
       <thead className="w-full">
        
       </thead>
-      <tbody className="border-b w-full flex flex-col overflow-scroll border-gray-700">
+      <tbody className="border-b w-full flex flex-col overflow-scroll border-[#202020]">
         <Item></Item>
         <Item></Item>
         <Item></Item>

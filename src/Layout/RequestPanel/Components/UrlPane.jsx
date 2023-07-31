@@ -1,7 +1,7 @@
 function UrlPane() {
   return (
-    <div className={` w-[100%] p-2 pt-3 `}>
-      <div className="flex  items-center m-1 bg-[#202020] rounded-md overflow-hidden">
+    <div className={` w-full flex p-2 pt-3 `}>
+      <div className="flex w-full items-center m-1 bg-[#202020] rounded-md overflow-hidden">
         <select className=" bg-transparent border-r-[1px] border-[#363636] text-sm font-bold text-gray-300 py-2 pl-4 pr-8  rounded-l-md focus:outline-none">
           <option value="">GET</option>
           <option value="">POST</option>

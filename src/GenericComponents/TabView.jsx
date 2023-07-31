@@ -19,7 +19,7 @@ export function TabView({
 
   return (
     <div className={className}>
-      <div className="flex flex-row content-center items-center overflow-x-scroll border-gray-100  no-scrollbar">
+      <div className="flex flex-row h-fit content-center items-center overflow-x-scroll border-[#202020]  no-scrollbar">
         {Children.map(children, (child, index) => {
           return (
             <div
@@ -36,7 +36,7 @@ export function TabView({
         })}
       </div>
 
-      <div className="flex flex-row content-center items-center overflow-x-scroll border-gray-100  no-scrollbar">
+      <div className="flex h-full w-full relative flex-col content-center items-center overflow-x-scroll border-[#202020]  no-scrollbar">
         {Children.map(children, (child, index) => {
           if (activeTab === index) return <>{child}</>;
         })}
@@ -46,5 +46,5 @@ export function TabView({
 }
 
 export function TabContent({ label, children }) {
-  return <>{children}</>;
+  return <div className="flex flex-col w-full h-full overflow-scroll">{children}</div>;
 }
