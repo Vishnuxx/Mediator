@@ -7,7 +7,7 @@ import { JSONViewer } from "react-json-editor-viewer";
 
 function ResponsePanel() {
 	const { mediator } = useContext(MediatorContext);
-	const [responsedata, setresponsedata] = useState({data:"" , time:"" , size:""});
+	const [responsedata, setresponsedata] = useState({data:"" , time:"" , size:"" , status:""});
 	let options = {
 		lineNumbers: true,
 		smartIndent: true,
@@ -25,9 +25,9 @@ function ResponsePanel() {
 		return () => mediator.unsubscribeResponse(setData);
 	}, []);
 
-	const setData = ({ data, time, size }) => {
+	const setData = ({ data, time, size , status}) => {
 		console.log(data);
-		setresponsedata({ data: data, time, size });
+		setresponsedata({ data: data, time, size , status });
 	};
 	const editorDidMount = (editor, monaco) => {
 		// Here, you can access the monaco instance and do additional configurations if needed
@@ -37,21 +37,30 @@ function ResponsePanel() {
 		
 	};
 	return (
-		<div className="h-full w-full flex flex-col justify-start">
-			<p className="w-fit pl-4 pt-2 text-gray-500">Response</p>
-			<div className="w-full h-fit border-b px-4 border-[#202020]">
-				<TabView>
-					<TabContent label="JSON"></TabContent>
-					<TabContent label="Raw"></TabContent>
-				</TabView>
+		<div className="h-full w-full flex flex-col justify-start overflow-y-auto no-scrollbar">
+			<div className=" sticky top-[0px] bg-[#181818]">
+				<div className="flex w-full h-fit p-2 font-bold text-gray-400 text-xs">
+					<p className="w-fit pl-4 m-0">
+						Status: <span className="text-green-600">{responsedata.status}</span>
+					</p>
+					<p className="w-fit pl-4 m-0">
+						Time: <span className="text-green-600">{responsedata.time}</span>
+					</p>
+					<p className="w-fit pl-4 m-0">
+						Size: <span className="text-green-600">{responsedata.size}</span>
+					</p>
+				</div>
+				<div className="w-full h-fit border-b px-4 border-[#202020]">
+					<TabView>
+						<TabContent label="JSON"></TabContent>
+						<TabContent label="Raw"></TabContent>
+					</TabView>
+				</div>
 			</div>
+
 			<div className="h-full flex w-full  text-start">
 				{/* {responsedata.data} */}
-				<JSONViewer
-					collapsible
-					styles={styles}
-					data={responsedata.data}
-				/>
+				<JSONViewer collapsible styles={styles} data={responsedata.data} />
 			</div>
 		</div>
 	);
@@ -80,7 +89,7 @@ const styles = {
 		fontSize: 12,
 		fontFamily: "Lucida Console, monospace",
 		lineHeight: 1.25,
-		color: "#3E3D32"
+		color: "#3E3D32",
 	},
 	label: {
 		color: "DeepPink",
@@ -88,7 +97,7 @@ const styles = {
 	},
 	value: {
 		marginLeft: 10,
-		color:"white"
+		color: "white",
 	},
 	row: {
 		display: "flex",
@@ -131,26 +140,28 @@ const styles = {
 		fontSize: 12,
 	},
 	builtin: {
-		color: "green",
+		color: "white",
 		fontSize: 14,
+		fontWeight: "bold",
 	},
 	text: {
-		color: "green",
+		color: "orange",
 		fontSize: 14,
 	},
 	number: {
-		color: "purple",
+		color: "yellow",
 		fontSize: 14,
 	},
 	property: {
-		color: "DeepPink",
+		color: "skyblue",
+		fontWeight: "bold",
 		fontSize: 14,
 	},
 	collapseIcon: {
 		cursor: "pointer",
 		fontSize: 16,
-		color: "teal",
-		marginLeft:10
+		color: "lightgray",
+		marginLeft: 10,
 	},
 };
 

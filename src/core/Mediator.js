@@ -12,7 +12,7 @@ export const REQ_TYPE = {
 
 export default function Mediator() {
 	let METHOD = REQ_TYPE.GET;
-	let URL = "https://echo.hoppscotch.io";
+	let URL = "https://fakerapi.it/api/v1/companies";
 
 	const responseManager = new ResponseManager();
 
@@ -41,7 +41,7 @@ export default function Mediator() {
 				headers: {},
 				params: this.params.parseParams(),
 			});
-			responseManager.endRequest();
+			responseManager.endRequest(response);
 			responseManager.dispatchResponse(response.data);
 			return response.data;
 		} catch (error) {
