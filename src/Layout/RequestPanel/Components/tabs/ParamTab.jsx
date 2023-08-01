@@ -1,33 +1,33 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import TableView from "../../../../GenericComponents/TableView";
+import { MediatorContext } from "../../../../state/Providers/MediatorProvider";
 
 
 
 function ParamTab() {
-    const [rows, setRows] = useState(data);
-    useEffect(() => {
-      // This effect will only be triggered when `data` prop changes
-      // So, it won't re-render other columns when one column updates.
-      setRows(data);
-    }, [data]);
+  const {mediator} = useContext(MediatorContext)
+    const [rows, setRows] = useState(mediator.params.getParams());
+    // useEffect(() => {
+    //   setRows([...mediator.params.getParams()]);
+    // }, [data]);
 
     const addRow = () => {
-      setRows([...rows, { enabled: true, key: "", value: "" }]);
+    
+      mediator.params.addParam({ enabled: true, key: "", value: "" });
+        console.log(mediator.params.getParams())
+        setRows([...mediator.params.getParams()]);
     };
 
     const onChange = ({ row, key, value }) => {
-      setRows((prevRows) => {
-        const updatedRows = [...prevRows];
-        updatedRows[row][key] = value;
-        return updatedRows;
-      });
+      mediator.params.updateParam(row , key , value );
+      setRows([...mediator.params.getParams()]);
     };
 
     const onDelete = ({ row }) => {
-      setRows((old) => {
-        return old.filter((r, i) => row !== i);
-      });
-      console.log(row);
+      mediator.params.removeParam(row)
+      setRows([...mediator.params.getParams()]);
+      mediator.params.debug()
+      console.log(mediator.params.getParams());
     };
     return (
         <div className="w-full h-full flex flex-col">
@@ -40,25 +40,26 @@ function ParamTab() {
         className="w-full"
         onDataChanged={onChange}
         onDelete={onDelete}
-        schema={schema}
+        columns={columns}
         data={rows}
       />
       </div>
     );
 }
 
-const schema = [
+const columns = [
   {
     name: "enabled",
     label: "",
-    component: ({ value, onChange }) => (
-      <input
+    component: ({ value, onChange }) => {
+      console.log(value)
+      return <input
         type="checkbox"
-        className="w-[5px"
+        className="w-[15px] h-[15px]"
         checked={value}
-        onChange={(e) => onChange(!e.target.value)}
+        onChange={(e) => onChange(!value)}
       />
-    ),
+    },
   },
   {
     name: "key",
