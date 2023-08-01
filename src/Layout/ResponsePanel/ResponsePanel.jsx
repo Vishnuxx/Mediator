@@ -4,44 +4,32 @@ import { MediatorContext } from "../../state/Providers/MediatorProvider";
 
 import { JSONViewer } from "react-json-editor-viewer";
 
-
 function ResponsePanel() {
 	const { mediator } = useContext(MediatorContext);
-	const [responsedata, setresponsedata] = useState({data:"" , time:"" , size:"" , status:""});
-	let options = {
-		lineNumbers: true,
-		smartIndent: true,
-		indentWithTabs: true,
-		indentUnit: 2,
-		tabSize: 4,
-		theme: "dracula",
-		lineWrapping: true,
-		mode: { name: "javascript", json: true },
+	const [responsedata, setresponsedata] = useState({
+		data: "",
+		time: "",
+		size: "",
+		status: "",
+	});
 
-		// theme: "material-dark",
-	};
 	useEffect(() => {
 		mediator.subscribeResponse(setData);
 		return () => mediator.unsubscribeResponse(setData);
 	}, []);
 
-	const setData = ({ data, time, size , status}) => {
+	const setData = ({ data, time, size, status }) => {
 		console.log(data);
-		setresponsedata({ data: data, time, size , status });
-	};
-	const editorDidMount = (editor, monaco) => {
-		// Here, you can access the monaco instance and do additional configurations if needed
+		setresponsedata({ data: data, time, size, status });
 	};
 
-	const handleEditorChange = (newValue, e) => {
-		
-	};
 	return (
 		<div className="h-full w-full flex flex-col justify-start overflow-y-auto no-scrollbar">
 			<div className=" sticky top-[0px] bg-[#181818]">
 				<div className="flex w-full h-fit p-2 font-bold text-gray-400 text-xs">
 					<p className="w-fit pl-4 m-0">
-						Status: <span className="text-green-600">{responsedata.status}</span>
+						Status:{" "}
+						<span className="text-green-600">{responsedata.status}</span>
 					</p>
 					<p className="w-fit pl-4 m-0">
 						Time: <span className="text-green-600">{responsedata.time}</span>
@@ -164,4 +152,3 @@ const styles = {
 		marginLeft: 10,
 	},
 };
-
