@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
 		<title>Mediator - Open Source API Testing Platform</title>
 		<link
 			rel="shortcut icon"
@@ -16,10 +17,10 @@
 		<!-- Place this tag in your head or just before your close body tag. -->
 		<script async defer src="https://buttons.github.io/buttons.js"></script>
 	</head>
-	<body class="bg-[#000000]">
+	<body class="bg-[#000000] font-sans">
 		<main class="w-full h-full flex flex-col items-center">
 			<nav
-				class="h-fit w-screen text-sm flex justify-end fixed top-0 p-4 z-20 bg-black opacity-75"
+				class="h-fit w-screen text-sm flex justify-between fixed top-0 py-4 px-8 z-20 bg-black opacity-95"
 			>
 				<!-- Place this tag where you want the button to render. -->
 
@@ -33,6 +34,9 @@
 					>Sponsor</a
 				>
                 </div> -->
+				<div class="flex  w-[40px] h-[40px]">
+					<img src="./assets/logo.svg" alt="mediator">
+				</div>
 				<div class="mx-2">
 					<a
 						class="github-button"
@@ -53,9 +57,13 @@
 						Go to Editor
 					</button> -->
 			</nav>
+			
 			<div
 				class="w-full md:w-[70vw] relative top-20 lg:top-10 flex text-white flex-col mx-auto mt-20 justify-center items-center h-[60vh]"
 			>
+			<div class="flex  w-[90px] h-[90px]">
+					<img src="./assets/logo.svg" alt="mediator">
+				</div>
 				<h1
 					class="text-[2rem] md:text-[3rem] lg:text-[5rem] font-bold w-fit my-1 text-gray-300"
 				>
@@ -71,18 +79,19 @@
 					>
 						Star on Github
 					</a>
-					<button
+					<a
+					href="https://mediator-eosin.vercel.app/"
 						class="text-sm md:text-md lg:text-lg px-6 py-2 bg-purple-600 hover:bg-purple-500 text-white m-3 rounded border-md"
 					>
 						Go to Editor
-					</button>
+					</a>
 				</div>
 			</div>
 			<!-- <div class="w-"> -->
 			<img
 				src="./assets/mediator_screenshot1.png"
 				alt=""
-				class="ud-menu-scroll -bottom-[5vw] w-[90%] md:w-[90vw] right-0 opacity-0 max-h-[90vh] shadow-violet-500 shadow-2xl rounded border-lg md:-bottom-[5vw] relative"
+				class="ud-menu-scroll border border-violet-300 -bottom-[85vw] w-[90%] md:w-[90vw] right-0 opacity-0 max-h-[90vh] shadow-violet-500 shadow-2xl rounded-2xl md:-bottom-[5vw] relative"
 			/>
 			<!-- </div> -->
 		</main>
@@ -103,17 +112,18 @@
 					allowing you to focus on ensuring your endpoints perform flawlessly.
 				</p>
 
-				<button
-						class="text-sm md:text-md lg:text-lg px-6 py-2 hover:font-bold text-purple-300 font-semibold m-3 rounded border-md"
-					>
-						Go to Editor
-					</button>
+				<a
+				href="https://mediator-eosin.vercel.app/"
+					class="text-sm md:text-md lg:text-lg px-6 py-2 hover:font-bold text-purple-300 font-semibold m-3 rounded border-md"
+				>
+					Go to Editor
+				</a>
 
 				<img
-				src="./assets/mediator_screenshot1.png"
-				alt=""
-				class="  w-[90%] my-20 md:w-[90vw] right-0  max-h-[90vh] shadow-violet-500 shadow-2xl rounded border-lg relative"
-			/>
+					src="./assets/mediator_screenshot1.png"
+					alt=""
+					class="w-[90%] my-20 md:w-[90vw] right-0 max-h-[90vh] shadow-violet-500 shadow-2xl rounded border-lg relative"
+				/>
 
 				<h3
 					class="text-[1.3rem] md:text-[2rem] pb-4 font-bold w-fit my-1 text-gray-300"
@@ -163,9 +173,9 @@
 
 				const refElement = document.querySelector(".ud-menu-scroll");
 				const scrollTopMinus = scrollPos + 73;
-				refElement.style.bottom = `${scrollPos / 5}px`;
+				refElement.style.bottom = `${scrollPos / 3}px`;
 				refElement.style.transform = `scale(${
-					scrollPos / 200 > 1 ? 1 : scrollPos / 200
+					scrollPos / 300 > 1 ? 1 : scrollPos / 300
 				})  `;
 				refElement.style.opacity = `${(scrollPos * 0.8) / 100}`;
 				// console.log(scrollPos);
