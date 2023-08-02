@@ -19,7 +19,7 @@ export function ReqPropTab() {
 			<TabContent label="Authorization">
 				<AuthorizationTab></AuthorizationTab>
 			</TabContent>
-			<TabContent label="Tests">Tests</TabContent>
+			<TabContent label="Tests">Coming soon</TabContent>
 		</TabView>
 	);
 }
