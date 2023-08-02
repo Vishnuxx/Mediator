@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mediator - Open Source API Testing Platform</title>
+		<link
+			rel="shortcut icon"
+			href="assets/images/favicon.png"
+			type="image/x-icon"
+		/>
+		<link href="/dist/output.css" rel="stylesheet" />
+
+		<script src="https://cdn.tailwindcss.com"></script>
+		<!-- Place this tag in your head or just before your close body tag. -->
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
+	</head>
+	<body class="bg-[#000000]">
+		<main class="w-full h-full flex flex-col items-center">
+			<nav
+				class="h-fit w-screen text-sm flex justify-end fixed top-0 p-4 z-20 bg-black opacity-75"
+			>
+				<!-- Place this tag where you want the button to render. -->
+
+				<!-- Place this tag where you want the button to render. -->
+				<!-- <div class="mx-2">
+                    <a
+					class="github-button"
+					href="https://github.com/sponsors/vishnuxx"
+					data-size="large"
+					aria-label="Sponsor @vishnuxx on GitHub"
+					>Sponsor</a
+				>
+                </div> -->
+				<div class="mx-2">
+					<a
+						class="github-button"
+						href="https://github.com/vishnuxx/mediator"
+						data-size="large"
+						data-show-count="true"
+						aria-label="Star vishnuxx/mediator on GitHub"
+						>Star</a
+					>
+				</div>
+
+				<!-- <button class="px-6 py-2 m-3 font-bold text-white rounded border-md">
+					Star on Github
+				</button> -->
+				<!-- <button
+						class="px-6 py-2 bg-purple-600 text-white  m-3 rounded border-md"
+					>
+						Go to Editor
+					</button> -->
+			</nav>
+			<div
+				class="w-full md:w-[70vw] relative top-20 lg:top-10 flex text-white flex-col mx-auto mt-20 justify-center items-center h-[60vh]"
+			>
+				<h1
+					class="text-[2rem] md:text-[3rem] lg:text-[5rem] font-bold w-fit my-1 text-gray-300"
+				>
+					MEDIATOR
+				</h1>
+				<h2 class="w-fit mb-3 text-sm md:text-lg">
+					A Simple Opensource API Testing tool
+				</h2>
+				<div class="h-fit w-fit p-2 flex">
+					<a
+						href="https://github.com/vishnuxx/mediator"
+						class="text-sm md:text-md lg:text-lg px-6 py-2 font-bold text-white m-3 rounded border-md"
+					>
+						Star on Github
+					</a>
+					<button
+						class="text-sm md:text-md lg:text-lg px-6 py-2 bg-purple-600 hover:bg-purple-500 text-white m-3 rounded border-md"
+					>
+						Go to Editor
+					</button>
+				</div>
+			</div>
+			<!-- <div class="w-"> -->
+			<img
+				src="./assets/mediator_screenshot1.png"
+				alt=""
+				class="ud-menu-scroll -bottom-[5vw] w-[90%] md:w-[90vw] right-0 opacity-0 max-h-[90vh] shadow-violet-500 shadow-2xl rounded border-lg md:-bottom-[5vw] relative"
+			/>
+			<!-- </div> -->
+		</main>
+
+		<section
+			class="h-fit w-full flex justify-center items-center flex-col text-white"
+		>
+			<content class="w-[90vw] md:w-[60vw] flex flex-col items-center">
+				<h2
+					class="text-[1.5rem] md:text-[2.5rem] pb-4 font-bold w-fit my-1 text-gray-300"
+				>
+					Simplify API Testing
+				</h2>
+				<p class="text-[1rem] text-center pb-4 w-fit my-1 text-gray-300">
+					Your Straightforward API Testing Solution.Mediator takes the
+					complexity out of API testing. With a straightforward interface, you
+					can effortlessly create, manage, and execute tests for your APIs,
+					allowing you to focus on ensuring your endpoints perform flawlessly.
+				</p>
+
+				<button
+						class="text-sm md:text-md lg:text-lg px-6 py-2 hover:font-bold text-purple-300 font-semibold m-3 rounded border-md"
+					>
+						Go to Editor
+					</button>
+
+				<img
+				src="./assets/mediator_screenshot1.png"
+				alt=""
+				class="  w-[90%] my-20 md:w-[90vw] right-0  max-h-[90vh] shadow-violet-500 shadow-2xl rounded border-lg relative"
+			/>
+
+				<h3
+					class="text-[1.3rem] md:text-[2rem] pb-4 font-bold w-fit my-1 text-gray-300"
+				>
+					Join Our Community
+				</h3>
+				<p class="pb-5 text-center text-gray-400">
+					Mediator is a growing open-source project, and we're excited to have
+					you on board. As we continue to improve and expand Mediator, your
+					feedback and contributions will play a crucial role in shaping its
+					future.
+				</p>
+				<h3
+					class="text-[1rem] md:text-[2rem] pb-4 font-bold w-fit my-1 text-gray-300"
+				>
+					Start Testing Today
+				</h3>
+			</content>
+		</section>
+		<footer
+			class="bg-[#101010] h-[300px] w-full text-gray-500 flex flex-col items-center"
+		>
+			<p>Created By Vishnuxx</p>
+		</footer>
+
+		<script src="assets/js/main.js"></script>
+		<script>
+			// ==== for menu scroll
+			const pageLink = document.querySelectorAll(".ud-menu-scroll");
+
+			pageLink.forEach((elem) => {
+				elem.addEventListener("click", (e) => {
+					e.preventDefault();
+					document.querySelector(elem.getAttribute("href")).scrollIntoView({
+						behavior: "smooth",
+						offsetTop: 1 - 60,
+					});
+				});
+			});
+
+			// section menu active
+			function onScroll(event) {
+				const scrollPos =
+					window.pageYOffset ||
+					document.documentElement.scrollTop ||
+					document.body.scrollTop;
+
+				const refElement = document.querySelector(".ud-menu-scroll");
+				const scrollTopMinus = scrollPos + 73;
+				refElement.style.bottom = `${scrollPos / 5}px`;
+				refElement.style.transform = `scale(${
+					scrollPos / 200 > 1 ? 1 : scrollPos / 200
+				})  `;
+				refElement.style.opacity = `${(scrollPos * 0.8) / 100}`;
+				// console.log(scrollPos);
+			}
+
+			window.document.addEventListener("scroll", onScroll);
+		</script>
+	</body>
+</html>
