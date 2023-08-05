@@ -3,6 +3,7 @@ import { TabContent, TabView } from "../../GenericComponents/TabView";
 import { MediatorContext } from "../../state/Providers/MediatorProvider";
 
 import { JSONViewer } from "react-json-editor-viewer";
+import { Editor } from "@monaco-editor/react";
 
 function ResponsePanel() {
 	const { mediator } = useContext(MediatorContext);
@@ -46,9 +47,31 @@ function ResponsePanel() {
 				</div>
 			</div>
 
-			<div className="h-full flex w-full  text-start">
+			<div className="h-full flex   text-start">
 				{/* {responsedata.data} */}
-				<JSONViewer collapsible styles={styles} data={responsedata.data} />
+				{/* <JSONViewer collapsible styles={styles} data={responsedata.data} /> */}
+				<Editor
+				
+					height="85vh"
+					// width={`100%`}
+					language={"json"}
+					value={JSON.stringify(responsedata.data , null , 2)}
+					theme={"vs-dark"}
+					options={{
+						
+						readOnly: false,
+						minimap: {
+							enabled: false,
+							
+						},
+						fontSize: 13,
+						cursorStyle: "block",
+						wordWrap: "on",
+					
+					}}
+					defaultValue=""
+					// onChange={handleEditorChange}
+				/>
 			</div>
 		</div>
 	);
@@ -56,99 +79,3 @@ function ResponsePanel() {
 
 export default ResponsePanel;
 
-const styles = {
-	dualView: {
-		display: "flex",
-	},
-	jsonViewer: {
-		borderLeft: "1px dashed white",
-		lineHeight: 1.25,
-		width: "50%",
-		borderLeft: "1px solid lightgrey",
-		margin: 10,
-	},
-	jsonEditor: {
-		width: "50%",
-		fontSize: 12,
-		fontFamily: "Lucida Console, monospace",
-		lineHeight: 1.25,
-	},
-	root: {
-		fontSize: 12,
-		fontFamily: "Lucida Console, monospace",
-		lineHeight: 1.25,
-		color: "#3E3D32",
-	},
-	label: {
-		color: "DeepPink",
-		marginTop: 30,
-	},
-	value: {
-		marginLeft: 10,
-		color: "white",
-	},
-	row: {
-		display: "flex",
-	},
-	withChildrenLabel: {
-		color: "DeepPink",
-	},
-	select: {
-		borderRadius: 3,
-		borderColor: "grey",
-		backgroundColor: "DimGray",
-		color: "khaki",
-	},
-	input: {
-		borderRadius: 3,
-		border: "1px solid #272822",
-		padding: 2,
-		fontFamily: "Lucida Console, monospace",
-		fontSize: 15,
-		backgroundColor: "gray",
-		color: "khaki",
-		width: "200%",
-	},
-	addButton: {
-		cursor: "pointer",
-		color: "LightGreen",
-		marginLeft: 15,
-		fontSize: 12,
-	},
-	removeButton: {
-		cursor: "pointer",
-		color: "magenta",
-		marginLeft: 15,
-		fontSize: 12,
-	},
-	saveButton: {
-		cursor: "pointer",
-		color: "green",
-		marginLeft: 15,
-		fontSize: 12,
-	},
-	builtin: {
-		color: "white",
-		fontSize: 14,
-		fontWeight: "bold",
-	},
-	text: {
-		color: "orange",
-		fontSize: 14,
-	},
-	number: {
-		color: "yellow",
-		fontSize: 14,
-	},
-	property: {
-		color: "skyblue",
-		fontWeight: "bold",
-		fontSize: 14,
-	},
-	collapseIcon: {
-		cursor: "pointer",
-		fontSize: 16,
-		color: "lightgray",
-		marginLeft: 10,
-	},
-};

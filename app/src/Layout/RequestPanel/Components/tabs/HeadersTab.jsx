@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import TableView from "../../../../GenericComponents/TableView";
+import { MediatorContext } from "../../../../state/Providers/MediatorProvider";
+import { HEADERS } from "../../../../constants/header_options";
 
 function HeaderTab() {
-	const [rows, setRows] = useState(data);
-	useEffect(() => {
-		// This effect will only be triggered when `data` prop changes
-		// So, it won't re-render other columns when one column updates.
-		setRows(data);
-	}, [data]);
+	const { mediator } = useContext(MediatorContext);
+	const [rows, setRows] = useState(mediator.header.get());
+	// useEffect(() => {
+	//   setRows([...mediator.header.getParams()]);
+	// }, [data]);
 
 	const addRow = () => {
-		setRows([...rows, { enabled: true, key: "", value: "" }]);
+		mediator.header.add({ enabled: true, key: "", value: "" });
+		console.log(mediator.header.get());
+		setRows([...mediator.header.get()]);
 	};
 
 	const onChange = ({ row, key, value }) => {
-		setRows((prevRows) => {
-			const updatedRows = [...prevRows];
-			updatedRows[row][key] = value;
-			return updatedRows;
-		});
+		mediator.header.update(row, key, value);
+		setRows([...mediator.header.get()]);
 	};
 
 	const onDelete = ({ row }) => {
-		setRows((old) => {
-			return old.filter((r, i) => row !== i);
-		});
-		console.log(row);
+		mediator.header.remove(row);
+		setRows([...mediator.header.get()]);
+		mediator.header.debug();
+		console.log(mediator.header.get());
 	};
 	return (
 		<div className="w-full h-full flex flex-col">
@@ -40,7 +40,7 @@ function HeaderTab() {
 			</div>
 			<TableView
 				showLabels={false}
-				className="w-full"
+				className="w-full text-sm"
 				onDataChanged={onChange}
 				onDelete={onDelete}
 				columns={columns}
@@ -51,29 +51,43 @@ function HeaderTab() {
 }
 
 const columns = [
-	{
-		name: "enabled",
-		label: "",
-		component: ({ value, onChange }) => (
-			<input
-				type="checkbox"
-				className="w-[5px"
-				checked={value}
-				onChange={(e) => onChange(!value)}
-			/>
-		),
-	},
+	// {
+	// 	name: "enabled",
+	// 	label: "",
+	// 	component: ({ value, onChange }) => (
+	// 		// <input
+	// 		// 	type="checkbox"
+	// 		// 	className="w-[5px"
+	// 		// 	checked={value}
+	// 		// 	onChange={(e) => onChange(!value)}
+	// 		// />
+	// 		<></>
+	// 	),
+	// },
 	{
 		name: "key",
 		label: "",
 		component: ({ value, onChange, row }) => (
-			<input
-				className="bg-transparent focus:outline-none w-full font-semibold text-orange-300"
-				placeholder={`Key ${row}`}
-				type="text"
+			// <input
+			// 	className="bg-transparent focus:outline-none w-full font-semibold text-orange-300"
+			// 	placeholder={`Key ${row}`}
+			// 	type="text"
+			// 	value={value}
+			// 	onChange={(e) => onChange(e.target.value)}
+			// />
+			<select
 				value={value}
 				onChange={(e) => onChange(e.target.value)}
-			/>
+				className="bg-transparent focus:outline-none w-full font-semibold text-blue-300"
+			>
+				{HEADERS.map((header, i) => {
+					return (
+						<option key={i} value={header == "NONE" ? "" : header}>
+							{header}
+						</option>
+					);
+				})}
+			</select>
 		),
 	},
 	{
@@ -90,12 +104,23 @@ const columns = [
 		),
 	},
 	{
-		name: "value",
+		name: "enabled",
 		label: "",
 		component: ({ value, onChange, deleteItem }) => (
-			<button onClick={deleteItem} className="text-red-500 focus:outline-none">
-				Delete
-			</button>
+			<div className="w-full flex justify-around">
+				<input
+					type="checkbox"
+					className="w-[15px]"
+					checked={value}
+					onChange={(e) => onChange(!value)}
+				/>
+				<button
+					onClick={deleteItem}
+					className="text-red-500 focus:outline-none"
+				>
+					Delete
+				</button>
+			</div>
 		),
 	},
 ];
