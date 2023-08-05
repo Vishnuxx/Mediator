@@ -1,7 +1,7 @@
 import axios from "axios";
-import Params from "./Models/Params";
+import ParamsManager from "./Models/ParamsManager";
 import ResponseManager from "./Models/ResponseManager";
-import Header from "./Models/Header";
+import HeaderManager from "./Models/HeaderManager";
 
 export const REQ_TYPE = {
 	GET: "GET",
@@ -17,8 +17,8 @@ export default function Mediator() {
 
 	const responseManager = new ResponseManager();
 
-	this.params = new Params();
-	this.header = new Header();
+	this.params = new ParamsManager();
+	this.header = new HeaderManager();
 
 	this.getMethod = () => METHOD;
 	this.getURL = () => URL;

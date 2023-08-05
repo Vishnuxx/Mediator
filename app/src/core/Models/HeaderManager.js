@@ -1,22 +1,22 @@
-export default function Params() {
-	const params = [{ enabled: true, key: "", value: "" }];
-	this.get = () => params;
+export default function HeaderManager() {
+	const header = [{ enabled: true, key: "", value: "" }];
+	this.get = () => header;
 
-	this.add = () => {
-		params.push({ enabled: true, key: "" , value: "" });
+	this.add = (key, value) => {
+		header.push({ enabled: true, key: "", value: "" });
 	};
 
 	this.remove = (index) => {
-		params.splice(index, 1);
+		header.splice(index, 1);
 	};
 
 	this.update = (index, key, value) => {
-		params[index][key] = value;
+		header[index][key] = value;
 	};
 
 	this.parse = () => {
 		const obj = {};
-		params.map((item, index) => {
+		header.map((item, index) => {
 			if (item.enabled && ![undefined, null].includes(item.value)) {
 				if (![item.key, item.value].includes("")) {
 					obj[item.key] = item.value;
