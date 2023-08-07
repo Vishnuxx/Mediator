@@ -1,5 +1,7 @@
 export default function HeaderManager() {
 	const header = [{ enabled: true, key: "", value: "" }];
+	let contentType = null;
+
 	this.get = () => header;
 
 	this.add = (key, value) => {
@@ -14,6 +16,10 @@ export default function HeaderManager() {
 		header[index][key] = value;
 	};
 
+	this.getContentType = () => contentType
+
+	this.updateContentType = (value) => contentType = value
+
 	this.parse = () => {
 		const obj = {};
 		header.map((item, index) => {
@@ -23,6 +29,10 @@ export default function HeaderManager() {
 				}
 			}
 		});
+
+		if (contentType && obj["Content-Type"] === contentType) {
+			obj["Content-Type"] = contentType;
+		}
 		return obj;
 	};
 }
