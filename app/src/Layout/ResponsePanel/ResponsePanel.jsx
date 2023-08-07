@@ -2,11 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { TabContent, TabView } from "../../GenericComponents/TabView";
 import { MediatorContext } from "../../state/Providers/MediatorProvider";
 
-import { JSONViewer } from "react-json-editor-viewer";
-import { Editor } from "@monaco-editor/react";
+import {  useMonaco } from "@monaco-editor/react";
 
 function ResponsePanel() {
 	const { mediator } = useContext(MediatorContext);
+	const monaco = useMonaco();
 	const [responsedata, setresponsedata] = useState({
 		data: "",
 		time: "",
@@ -20,9 +20,35 @@ function ResponsePanel() {
 	}, []);
 
 	const setData = ({ data, time, size, status }) => {
-		console.log(data);
 		setresponsedata({ data: data, time, size, status });
+		monaco.editor.getModel().setValue(JSON.stringify(data , undefined , 4))
 	};
+	
+
+	useEffect(() => {
+		if(!monaco) return
+		const editorInstance = monaco.editor.create(
+			document.getElementById("response-viewer"),
+			{
+				readOnly: true,
+				value: responsedata.data,
+				language: "json",
+				automaticLayout: true,
+				theme: "vs-dark",
+
+				minimap: {
+					enabled: false,
+				},
+				fontSize: 13,
+				wordWrap: "on",
+			}
+		);
+
+	console.log(monaco)
+		return () => {
+			editorInstance.dispose();
+		};
+	}, [monaco]);
 
 	return (
 		<div className="h-full w-full flex flex-col justify-start overflow-y-auto no-scrollbar">
@@ -47,31 +73,8 @@ function ResponsePanel() {
 				</div>
 			</div>
 
-			<div className="h-full flex   text-start">
-				{/* {responsedata.data} */}
-				{/* <JSONViewer collapsible styles={styles} data={responsedata.data} /> */}
-				<Editor
+			<div id="response-viewer" className="h-full flex   text-start">
 				
-					height="85vh"
-					// width={`100%`}
-					language={"json"}
-					value={JSON.stringify(responsedata.data , null , 2)}
-					theme={"vs-dark"}
-					options={{
-						
-						readOnly: false,
-						minimap: {
-							enabled: false,
-							
-						},
-						fontSize: 13,
-						cursorStyle: "block",
-						wordWrap: "on",
-					
-					}}
-					defaultValue=""
-					// onChange={handleEditorChange}
-				/>
 			</div>
 		</div>
 	);
