@@ -2,6 +2,7 @@ import axios from "axios";
 import ParamsManager from "./Models/ParamsManager";
 import ResponseManager from "./Models/ResponseManager";
 import HeaderManager from "./Models/HeaderManager";
+import BodyManager from "./Models/BodyManager";
 
 export const REQ_TYPE = {
 	GET: "GET",
@@ -19,6 +20,7 @@ export default function Mediator() {
 
 	this.params = new ParamsManager();
 	this.header = new HeaderManager();
+	this.body = new BodyManager()
 
 	this.getMethod = () => METHOD;
 	this.getURL = () => URL;
@@ -42,6 +44,7 @@ export default function Mediator() {
 				method: METHOD,
 				headers: this.header.parse(),
 				params: this.params.parse(),
+				body: this.body.parse()
 			});
 			responseManager.endRequest(response);
 			responseManager.dispatchResponse(response.data);
@@ -51,9 +54,9 @@ export default function Mediator() {
 		}
 	};
 
-	this.response = () => {};
+	
 
 	this.debug = () => {
-		console.log(METHOD, URL);
+		console.log();
 	};
 }
