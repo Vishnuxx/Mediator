@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { TabContent, TabView } from "../../GenericComponents/TabView";
 import { MediatorContext } from "../../state/Providers/MediatorProvider";
 
-import {  useMonaco } from "@monaco-editor/react";
+import { loader } from "@monaco-editor/react";
 
 function ResponsePanel() {
 	const { mediator } = useContext(MediatorContext);
-	const monaco = useMonaco();
+	const editor = useRef();
+
 	const [responsedata, setresponsedata] = useState({
 		data: "",
 		time: "",
@@ -15,40 +16,50 @@ function ResponsePanel() {
 	});
 
 	useEffect(() => {
+		async function init() {
+			const monacoinstance = await loader.init();
+
+			const monaco = monacoinstance.editor.create(
+				document.getElementById("response-viewer"),
+				{
+					value: responsedata.data,
+					language: "json",
+					automaticLayout: true,
+					theme: "vs-dark",
+					minimap: { enabled: false },
+					// scrollbar: { vertical: "hidden" },
+				}
+			);
+
+			editor.current = monaco;
+			console.log(editor.current);
+
+			monaco.onDidChangeModelContent(() => {
+				const updatedValue = monaco.getValue();
+			});
+		}
+
+		init();
+
+		console.log(editor.current);
+
+		return () => {
+			editor.current = null;
+		};
+	}, []);
+
+	useEffect(() => {
 		mediator.subscribeResponse(setData);
-		return () => mediator.unsubscribeResponse(setData);
+
+		return () => {
+			mediator.unsubscribeResponse(setData);
+		};
 	}, []);
 
 	const setData = ({ data, time, size, status }) => {
 		setresponsedata({ data: data, time, size, status });
-		monaco.editor.getModel().setValue(JSON.stringify(data , undefined , 4))
+		editor.current.setValue(JSON.stringify(data, undefined, 4));
 	};
-	
-
-	useEffect(() => {
-		if(!monaco) return
-		const editorInstance = monaco.editor.create(
-			document.getElementById("response-viewer"),
-			{
-				readOnly: true,
-				value: responsedata.data,
-				language: "json",
-				automaticLayout: true,
-				theme: "vs-dark",
-
-				minimap: {
-					enabled: false,
-				},
-				fontSize: 13,
-				wordWrap: "on",
-			}
-		);
-
-	console.log(monaco)
-		return () => {
-			editorInstance.dispose();
-		};
-	}, [monaco]);
 
 	return (
 		<div className="h-full w-full flex flex-col justify-start overflow-y-auto no-scrollbar">
@@ -73,12 +84,9 @@ function ResponsePanel() {
 				</div>
 			</div>
 
-			<div id="response-viewer" className="h-full flex   text-start">
-				
-			</div>
+			<div id="response-viewer" className="h-full flex   text-start"></div>
 		</div>
 	);
 }
 
 export default ResponsePanel;
-
