@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { MediatorContext } from "../../../../state/Providers/MediatorProvider";
-import { Editor, useMonaco } from "@monaco-editor/react";
+import {  useMonaco } from "@monaco-editor/react";
 
 function BodyTab() {
 	const { mediator } = useContext(MediatorContext);
