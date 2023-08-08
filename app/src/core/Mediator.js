@@ -1,13 +1,15 @@
 import axios from "axios";
-import Params from "./Models/Params";
+import ParamsManager from "./Models/ParamsManager";
 import ResponseManager from "./Models/ResponseManager";
+import HeaderManager from "./Models/HeaderManager";
+import BodyManager from "./Models/BodyManager";
 
 export const REQ_TYPE = {
 	GET: "GET",
 	POST: "POST",
 	UPDATE: "UPDATE",
 	DELETE: "DELETE",
-	OPTION: "OPTION",
+	OPTIONS: "OPTIONS",
 };
 
 export default function Mediator() {
@@ -16,7 +18,9 @@ export default function Mediator() {
 
 	const responseManager = new ResponseManager();
 
-	this.params = new Params();
+	this.params = new ParamsManager();
+	this.header = new HeaderManager();
+	this.body = new BodyManager()
 
 	this.getMethod = () => METHOD;
 	this.getURL = () => URL;
@@ -38,20 +42,21 @@ export default function Mediator() {
 			const response = await axios({
 				url: URL,
 				method: METHOD,
-				headers: {},
-				params: this.params.parseParams(),
+				headers: this.header.parse(),
+				params: this.params.parse(),
+				body: this.body.parse()
 			});
 			responseManager.endRequest(response);
 			responseManager.dispatchResponse(response.data);
 			return response.data;
 		} catch (error) {
-			console.log(error)
+			console.log(error, this.header.parse());
 		}
 	};
 
-	this.response = () => {};
+	
 
 	this.debug = () => {
-		console.log(METHOD, URL);
+		console.log();
 	};
 }

@@ -12,7 +12,6 @@ function UrlPane() {
 		mediator.debug();
 	};
 	const onReqMethodChanged = (e) => {
-		console.log(e.target.value);
 		mediator.setMethod(e.target.value);
 		mediator.debug();
 	};
@@ -30,7 +29,7 @@ function UrlPane() {
 				>
 					<option value={REQ_TYPE.GET}>GET</option>
 					<option value={REQ_TYPE.POST}>POST</option>
-					<option vvalue={REQ_TYPE.OPTION}>OPTION</option>
+					<option vvalue={REQ_TYPE.OPTIONS}>OPTIONS</option>
 					<option value={REQ_TYPE.UPDATE}>UPDATE</option>
 					<option value={REQ_TYPE.DELETE}>DELETE</option>
 				</select>

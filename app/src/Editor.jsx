@@ -10,14 +10,15 @@ function Editor(props) {
 	return (
 		<MediatorProvider>
 			<section
-				className={`w-[100%] h-screen box-border flex flex-col bg-green-300 overflow-scroll `}
+				className={`w-[100%] h-screen box-border flex flex-col bg-[#171717] overflow-scroll `}
 			>
 				<AppBar></AppBar>
 				<Split
 					className={`bg-[#17171700] flex-1 w-full `}
 					renderBar={renderbar}
 				>
-					<div className={` w-full flex  flex-col  bg-[#171717]`}>
+					{/* <div className="w-[250px] h-full bg-[#121212] "></div> */}
+					<div className={` w-full flex  flex-col  `}>
 						<Split mode="horizontal" renderBar={renderbar} className="h-full">
 							<div
 								className={`h-full w-[100%] flex flex-col overflow-hidden  bg-[#171717]`}

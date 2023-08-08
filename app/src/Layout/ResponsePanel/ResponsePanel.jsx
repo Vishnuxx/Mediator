@@ -1,11 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useRef, useState } from "react";
 import { TabContent, TabView } from "../../GenericComponents/TabView";
 import { MediatorContext } from "../../state/Providers/MediatorProvider";
 
-import { JSONViewer } from "react-json-editor-viewer";
+import { loader } from "@monaco-editor/react";
 
 function ResponsePanel() {
 	const { mediator } = useContext(MediatorContext);
+	const editor = useRef();
+
 	const [responsedata, setresponsedata] = useState({
 		data: "",
 		time: "",
@@ -14,13 +16,49 @@ function ResponsePanel() {
 	});
 
 	useEffect(() => {
+		async function init() {
+			const monacoinstance = await loader.init();
+
+			const monaco = monacoinstance.editor.create(
+				document.getElementById("response-viewer"),
+				{
+					value: responsedata.data,
+					language: "json",
+					automaticLayout: true,
+					theme: "vs-dark",
+					minimap: { enabled: false },
+					// scrollbar: { vertical: "hidden" },
+				}
+			);
+
+			editor.current = monaco;
+			console.log(editor.current);
+
+			monaco.onDidChangeModelContent(() => {
+				const updatedValue = monaco.getValue();
+			});
+		}
+
+		init();
+
+		console.log(editor.current);
+
+		return () => {
+			editor.current = null;
+		};
+	}, []);
+
+	useEffect(() => {
 		mediator.subscribeResponse(setData);
-		return () => mediator.unsubscribeResponse(setData);
+
+		return () => {
+			mediator.unsubscribeResponse(setData);
+		};
 	}, []);
 
 	const setData = ({ data, time, size, status }) => {
-		console.log(data);
 		setresponsedata({ data: data, time, size, status });
+		editor.current.setValue(JSON.stringify(data, undefined, 4));
 	};
 
 	return (
@@ -46,109 +84,9 @@ function ResponsePanel() {
 				</div>
 			</div>
 
-			<div className="h-full flex w-full  text-start">
-				{/* {responsedata.data} */}
-				<JSONViewer collapsible styles={styles} data={responsedata.data} />
-			</div>
+			<div id="response-viewer" className="h-full flex   text-start"></div>
 		</div>
 	);
 }
 
 export default ResponsePanel;
-
-const styles = {
-	dualView: {
-		display: "flex",
-	},
-	jsonViewer: {
-		borderLeft: "1px dashed white",
-		lineHeight: 1.25,
-		width: "50%",
-		borderLeft: "1px solid lightgrey",
-		margin: 10,
-	},
-	jsonEditor: {
-		width: "50%",
-		fontSize: 12,
-		fontFamily: "Lucida Console, monospace",
-		lineHeight: 1.25,
-	},
-	root: {
-		fontSize: 12,
-		fontFamily: "Lucida Console, monospace",
-		lineHeight: 1.25,
-		color: "#3E3D32",
-	},
-	label: {
-		color: "DeepPink",
-		marginTop: 30,
-	},
-	value: {
-		marginLeft: 10,
-		color: "white",
-	},
-	row: {
-		display: "flex",
-	},
-	withChildrenLabel: {
-		color: "DeepPink",
-	},
-	select: {
-		borderRadius: 3,
-		borderColor: "grey",
-		backgroundColor: "DimGray",
-		color: "khaki",
-	},
-	input: {
-		borderRadius: 3,
-		border: "1px solid #272822",
-		padding: 2,
-		fontFamily: "Lucida Console, monospace",
-		fontSize: 15,
-		backgroundColor: "gray",
-		color: "khaki",
-		width: "200%",
-	},
-	addButton: {
-		cursor: "pointer",
-		color: "LightGreen",
-		marginLeft: 15,
-		fontSize: 12,
-	},
-	removeButton: {
-		cursor: "pointer",
-		color: "magenta",
-		marginLeft: 15,
-		fontSize: 12,
-	},
-	saveButton: {
-		cursor: "pointer",
-		color: "green",
-		marginLeft: 15,
-		fontSize: 12,
-	},
-	builtin: {
-		color: "white",
-		fontSize: 14,
-		fontWeight: "bold",
-	},
-	text: {
-		color: "orange",
-		fontSize: 14,
-	},
-	number: {
-		color: "yellow",
-		fontSize: 14,
-	},
-	property: {
-		color: "skyblue",
-		fontWeight: "bold",
-		fontSize: 14,
-	},
-	collapseIcon: {
-		cursor: "pointer",
-		fontSize: 16,
-		color: "lightgray",
-		marginLeft: 10,
-	},
-};
