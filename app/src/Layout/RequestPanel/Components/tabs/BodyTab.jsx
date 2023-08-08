@@ -28,7 +28,9 @@ function BodyTab() {
 				value: body,
 				language: "json",
 				automaticLayout: true,
-				theme:"vs-dark"
+				theme: "vs-dark",
+				minimap: { enabled: false },
+				// scrollbar: { vertical: "hidden" },
 			}
 		);
 
