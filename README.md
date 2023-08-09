@@ -1,10 +1,11 @@
+
 # Mediator - Open Source API Testing Tool
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Mediator is an open-source API testing tool designed to simplify and enhance the testing of REST APIs. It is currently in its early stages of development and is actively seeking contributors and user feedback.
 
-![mediator thumb](https://github.com/Vishnuxx/Mediator/assets/74808440/62965696-89fd-4092-9455-9eb203fbffb2)
+![mediator thumb](https://github.com/Vishnuxx/Mediator/assets/74808440/768b3b0b-6c60-432e-b0e8-f8744e39f886)
 
 ## Features
 
