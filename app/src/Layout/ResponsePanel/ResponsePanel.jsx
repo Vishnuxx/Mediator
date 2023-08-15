@@ -1,9 +1,9 @@
-import { TabContent, TabView } from "../../GenericComponents/TabView";
+import { TabContent, TabView } from "../../genericComponents/TabView";
 import { useResponsePanel } from "./useResponsePanel";
 
 function ResponsePanel() {
-	const {responsedata } = useResponsePanel()
-	
+	const { responsedata } = useResponsePanel();
+
 	return (
 		<div className="h-full w-full flex flex-col justify-start overflow-y-auto no-scrollbar">
 			<div className=" sticky top-[0px] bg-[#181818]">

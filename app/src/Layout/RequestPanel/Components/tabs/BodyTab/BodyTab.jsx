@@ -1,55 +1,17 @@
 import { useContext, useEffect, useState } from "react";
-import { MediatorContext } from "../../../../state/Providers/MediatorProvider";
-import {  useMonaco } from "@monaco-editor/react";
+import { MediatorContext } from "../../../../../state/Providers/MediatorProvider";
+import { useMonaco } from "@monaco-editor/react";
+import { useBodyTab } from "./useBodyTab";
 
 function BodyTab() {
-	const { mediator } = useContext(MediatorContext);
-	const [body, setBody] = useState(mediator.body.get());
-	const [contenttype , setContentType] = useState(mediator.header.getContentType()??"")
-
-	const updateBody = (value) => {
-		mediator.body.set(value);
-		setBody(mediator.body.get());
-	};
-
-	const updateContentType = (e) => {
-
-		mediator.header.updateContentType(e.target.value)
-		setContentType(mediator.header.getContentType())
-	}
-
-	const monaco = useMonaco();
-
-	useEffect(() => {
-		
-		const editorInstance = monaco.editor.create(
-			document.getElementById("body-editor"),
-			{
-				value: body,
-				language: "json",
-				automaticLayout: true,
-				theme: "vs-dark",
-				minimap: { enabled: false },
-				// scrollbar: { vertical: "hidden" },
-			}
-		);
-
-		editorInstance.onDidChangeModelContent(() => {
-			const updatedValue = editorInstance.getValue();
-			updateBody(updatedValue);
-		});
-
-		return () => {
-			editorInstance.dispose();
-		};
-	}, []);
+	const { contenttype, updateContentType } = useBodyTab("body-editor");
 
 	return (
 		<div className="w-full h-full overflow-scroll  text-start ">
 			<div className="w-full h-[50px] text-gray-400 text-semibold px-4 box-border flex items-center border-b border-[#202020]">
 				<p className="w-fit">ContentType : </p>
 				<select
-				onChange={updateContentType}
+					onChange={updateContentType}
 					name="authtype"
 					id="type"
 					className="bg-transparent p-2 font-bold text-white focus:outline-none"

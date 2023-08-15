@@ -1,41 +1,8 @@
 import { useState } from "react";
+import { useAuthTab } from "./useAuthTab";
 
 function AuthorizationTab() {
-	const [formData, setFormData] = useState({
-		authtype: "none",
-		username: "",
-		password: "",
-		token: "",
-		discoveryUrl: "",
-		authorizationUrl: "",
-		accessTokenUrl: "",
-		clientId: "",
-		clientSecret: "",
-		clientScope: "",
-		apiKey: "",
-		apiValue: "",
-	});
-
-	const options = {
-		none: null,
-		basic: ["username", "password"],
-		bearer: ["token"],
-		oauth2: [
-			"token",
-			"discoveryUrl",
-			"authorizationUrl",
-			"accessTokenUrl",
-			"clientId",
-			"clientSecret",
-			"clientScope",
-		],
-		apikey: ["apiKey", "apiValue"],
-	};
-
-	const handleInputChange = (e) => {
-		const { name, value } = e.target;
-		setFormData((prevData) => ({ ...prevData, [name]: value }));
-	};
+	const { options, authorizationData, handleInputChange } = useAuthTab();
 
 	return (
 		<>
@@ -47,7 +14,7 @@ function AuthorizationTab() {
 						id="type"
 						className="bg-transparent p-2 font-bold text-white focus:outline-none"
 						onChange={handleInputChange}
-						value={formData.authtype}
+						value={authorizationData.authtype}
 					>
 						<option value="none">NONE</option>
 						<option value="basic">Basic Auth</option>
@@ -57,15 +24,15 @@ function AuthorizationTab() {
 					</select>
 				</div>
 				<div className="flex flex-col w-full h-full px-5">
-					{options[formData.authtype] &&
-						options[formData.authtype].map((field) => (
+					{options[authorizationData.authtype] &&
+						options[authorizationData.authtype].map((field) => (
 							<input
-							    className="bg-transparent w-full p-2 border-b border-1 text-white border-[#202020] focus:outline-none"
+								className="bg-transparent w-full p-2 border-b border-1 text-white border-[#202020] focus:outline-none"
 								key={field}
 								type={field.includes("password") ? "password" : "text"}
 								name={field}
 								placeholder={field}
-								value={formData[field]}
+								value={authorizationData[field]}
 								onChange={handleInputChange}
 							/>
 						))}

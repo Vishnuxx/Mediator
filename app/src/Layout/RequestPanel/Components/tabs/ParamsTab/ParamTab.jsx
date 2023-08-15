@@ -1,26 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import TableView from "../../../../GenericComponents/TableView";
-import { MediatorContext } from "../../../../state/Providers/MediatorProvider";
+import TableView from "../../../../../genericComponents/TableView";
+import { MediatorContext } from "../../../../../state/Providers/MediatorProvider";
+import { useParamsTab } from "./useParamsTab";
 
 function ParamTab() {
-	const { mediator } = useContext(MediatorContext);
-	const [rows, setRows] = useState(mediator.params.get());
-
-	const addRow = () => {
-		mediator.params.add({ enabled: true, key: "", value: "" });
-		console.log(mediator.params.get());
-		setRows([...mediator.params.get()]);
-	};
-
-	const onChange = ({ row, key, value }) => {
-		mediator.params.update(row, key, value);
-		setRows([...mediator.params.get()]);
-	};
-
-	const onDelete = ({ row }) => {
-		mediator.params.remove(row);
-		setRows([...mediator.params.get()]);
-	};
+	const { rows, addRow, onChange, onDelete } = useParamsTab();
 	return (
 		<div className="w-full h-full flex flex-col">
 			<div className="w-full h-[50px] text-gray-300 text-semibold px-5 box-border flex justify-between items-center border-b border-[#202020]">
@@ -96,7 +80,5 @@ const columns = [
 		),
 	},
 ];
-
-
 
 export default ParamTab;

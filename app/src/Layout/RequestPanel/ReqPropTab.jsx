@@ -1,8 +1,8 @@
-import { TabContent, TabView } from "../../../GenericComponents/TabView";
-import ParamTab from "./tabs/ParamTab";
-import HeaderTab from "./tabs/HeadersTab";
-import BodyTab from "./tabs/BodyTab";
-import AuthorizationTab from "./tabs/AuthorizationTab";
+import { TabContent, TabView } from "../../genericComponents/TabView";
+import ParamTab from "./Components/tabs/ParamsTab/ParamTab";
+import HeaderTab from "./Components/tabs/HeadersTab/HeadersTab";
+import BodyTab from "./Components/tabs/BodyTab/BodyTab";
+import AuthorizationTab from "./Components/tabs/AuthorizationTab/AuthorizationTab";
 
 export function ReqPropTab() {
 	return (

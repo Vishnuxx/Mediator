@@ -1,32 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import TableView from "../../../../GenericComponents/TableView";
-import { MediatorContext } from "../../../../state/Providers/MediatorProvider";
-import { HEADERS } from "../../../../constants/header_options";
+import TableView from "../../../../../genericComponents/TableView";
+import { MediatorContext } from "../../../../../state/Providers/MediatorProvider";
+import { HEADERS } from "../../../../../constants/header_options";
+import { useHeadersTab } from "./useHeadersTab";
 
 function HeaderTab() {
-	const { mediator } = useContext(MediatorContext);
-	const [rows, setRows] = useState(mediator.header.get());
-	// useEffect(() => {
-	//   setRows([...mediator.header.getParams()]);
-	// }, [data]);
-
-	const addRow = () => {
-		mediator.header.add({ enabled: true, key: "", value: "" });
-		console.log(mediator.header.get());
-		setRows([...mediator.header.get()]);
-	};
-
-	const onChange = ({ row, key, value }) => {
-		mediator.header.update(row, key, value);
-		setRows([...mediator.header.get()]);
-	};
-
-	const onDelete = ({ row }) => {
-		mediator.header.remove(row);
-		setRows([...mediator.header.get()]);
-		mediator.header.debug();
-		console.log(mediator.header.get());
-	};
+	const { rows, addRow, onChange, onDelete } = useHeadersTab();
 	return (
 		<div className="w-full h-full flex flex-col">
 			<div className="w-full h-[50px] text-gray-300 text-semibold px-5 box-border flex justify-between items-center border-b border-[#202020]">

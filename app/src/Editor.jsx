@@ -1,10 +1,9 @@
 import Split from "@uiw/react-split";
 
 import RequestPanel from "./Layout/RequestPanel/RequestPanel";
-import AppBar from "./Components/Appbar";
+import AppBar from "./components/Appbar";
 import ResponsePanel from "./Layout/ResponsePanel/ResponsePanel";
 import { MediatorProvider } from "./state/Providers/MediatorProvider";
-
 
 function Editor(props) {
 	return (
@@ -45,10 +44,7 @@ const renderbar = ({ onMouseDown, ...props }) => {
 				onMouseDown={onMouseDown}
 				style={{
 					backgroundColor: "#262626",
-          
 				}}
-
-        
 			/>
 		</div>
 	);
