@@ -1,24 +1,10 @@
 import { useContext, useState } from "react";
-import { MediatorContext } from "../../../state/Providers/MediatorProvider";
-import { REQ_TYPE } from "../../../core/Mediator";
+import { MediatorContext } from "../../../../state/Providers/MediatorProvider";
+import { REQ_TYPE } from "../../../../core/Mediator";
+import { useURLPane } from "./useURLPane";
 
 function UrlPane() {
-	const { mediator } = useContext(MediatorContext);
-	const [url, seturl] = useState(mediator.getURL());
-
-	const onURLChange = (e) => {
-		mediator.setURL(e.target.value);
-		seturl(mediator.getURL());
-		mediator.debug();
-	};
-	const onReqMethodChanged = (e) => {
-		mediator.setMethod(e.target.value);
-		mediator.debug();
-	};
-
-	const onSend = () => {
-		mediator.send();
-	};
+	const { url, onURLChange, onReqMethodChanged, onSend } = useURLPane();
 
 	return (
 		<div className={` w-full flex p-2 pt-3 `}>
@@ -40,7 +26,10 @@ function UrlPane() {
 					type="text"
 					placeholder="Enter text"
 				/>
-				<button onClick={onSend} className="py-2 px-8 text-sm  bg-indigo-500 font-bold text-gray-100 border-gray-600  focus:outline-none hover:bg-indigo-600">
+				<button
+					onClick={onSend}
+					className="py-2 px-8 text-sm  bg-indigo-500 font-bold text-gray-100 border-gray-600  focus:outline-none hover:bg-indigo-600"
+				>
 					Send
 				</button>
 			</div>

@@ -1,4 +1,4 @@
-import UrlPane from "./Components/UrlPane";
+import UrlPane from "./Components/URLPane/UrlPane";
 import { ReqPropTab } from "./Components/ReqPropTab";
 
 function RequestPanel() {
